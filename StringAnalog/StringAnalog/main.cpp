@@ -100,17 +100,39 @@ struct String {
         return newStr;
     }
     
+    /* ... */
+    char & at(size_t idx)       {
+        return str[idx];
+    }
+    char   at(size_t idx) const {
+        return str[idx];
+    }
+    /* ... */
+    
     size_t size;
     char *str;
 };
 
-int main(int argc, const char * argv[]) {
+void test1()
+{
     String s1("test test");
     
     String s2(3, 'X');
     s2.append(s1);
     
     String s3 = s2;
-    
+}
+
+void test2()
+{
+    String greet("Hello");
+    char ch1 = greet.at(0); // в char ch1 = greet.at(0) будет вызвана не const версия метода at
+
+    String const const_greet("Hello, Const!");
+    char const &ch2 = const_greet.at(0); // в char const & ch2 = const_greet.at(0) будет вызвана const версия метода at
+}
+
+int main(int argc, const char * argv[]) {
+    test2();
     return 0;
 }
