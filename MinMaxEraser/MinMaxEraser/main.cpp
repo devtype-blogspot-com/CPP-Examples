@@ -7,29 +7,28 @@
 #include <set>
 #include <vector>
 #include <algorithm>
+#include <set>
 
 int main(int argc, const char * argv[]) {
     int n;
     std::cin >> n;
     
-    std::vector<double> a;
+    std::multiset<double> a;
     int input;
     for (int i = 0; i < n; i++) {
         std::cin >> input;
-        a.push_back(input);
+        a.insert(input);
     }
     
-    std::sort(a.begin(), a.end());
+    //    std::cout << "smallest: " << *a.begin() << std::endl;
+    //    std::cout << "largest: " << *a.rbegin() << std::endl;
     
     float s;
     for (int j = 0; j < n - 1; j++) {
-        
         s = (*a.begin() + *a.rbegin()) / 2.;
         if (a.size() > 0) a.erase(a.begin());
         if (a.size() > 0) a.erase(--(a.end()));
-        
-        std::vector<double>::iterator low = std::lower_bound (a.begin(), a.end(), s);
-        a.insert(low, s);
+        a.insert(s);
     }
     
     printf("%.7f", *a.begin());
