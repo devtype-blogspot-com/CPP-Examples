@@ -12,22 +12,22 @@ int main(int argc, const char * argv[]) {
     int n;
     std::cin >> n;
     
-    std::set<double> a;
+    std::vector<double> a;
     int input;
     for (int i = 0; i < n; i++) {
         std::cin >> input;
-        a.insert(input);
+        a.push_back(input);
     }
     
-    //    std::cout << "smallest: " << *a.begin() << std::endl;
-    //    std::cout << "largest: " << *a.rbegin() << std::endl;
+    std::sort(a.begin(), a.end());
     
     float s;
     for (int j = 0; j < n - 1; j++) {
         s = (*a.begin() + *a.rbegin()) / 2.;
         if (a.size() > 0) a.erase(a.begin());
         if (a.size() > 0) a.erase(--(a.end()));
-        a.insert(s);
+        a.push_back(s);
+        std::sort(a.begin(), a.end());
     }
     
     printf("%.7f", *a.begin());
