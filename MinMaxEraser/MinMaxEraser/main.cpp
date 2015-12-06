@@ -23,11 +23,18 @@ int main(int argc, const char * argv[]) {
     
     float s;
     for (int j = 0; j < n - 1; j++) {
+        
         s = (*a.begin() + *a.rbegin()) / 2.;
         if (a.size() > 0) a.erase(a.begin());
         if (a.size() > 0) a.erase(--(a.end()));
-        a.push_back(s);
-        std::sort(a.begin(), a.end());
+        
+        std::vector<double>::iterator it;
+        for(it = a.begin(); it != a.end(); it++) {
+            if (*it < s) continue;
+            break;
+        }
+        a.insert(it, s);
+        
     }
     
     printf("%.7f", *a.begin());
