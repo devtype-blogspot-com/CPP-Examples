@@ -28,13 +28,8 @@ int main(int argc, const char * argv[]) {
         if (a.size() > 0) a.erase(a.begin());
         if (a.size() > 0) a.erase(--(a.end()));
         
-        std::vector<double>::iterator it;
-        for(it = a.begin(); it != a.end(); it++) {
-            if (*it < s) continue;
-            break;
-        }
-        a.insert(it, s);
-        
+        std::vector<double>::iterator low = std::lower_bound (a.begin(), a.end(), s);
+        a.insert(low, s);
     }
     
     printf("%.7f", *a.begin());
