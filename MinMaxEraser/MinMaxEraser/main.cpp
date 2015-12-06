@@ -9,7 +9,7 @@
 #include <algorithm>
 #include <set>
 
-int main(int argc, const char * argv[]) {
+int main(int argc, const char * argv[]) { // Failed test #17. Wrong answer
     int n;
     std::cin >> n;
     
@@ -20,10 +20,10 @@ int main(int argc, const char * argv[]) {
         a.insert(input);
     }
     
-    //    std::cout << "smallest: " << *a.begin() << std::endl;
-    //    std::cout << "largest: " << *a.rbegin() << std::endl;
+//    std::cout << "smallest: " << *a.begin() << std::endl;
+//    std::cout << "largest: " << *a.rbegin() << std::endl;
     
-    float s;
+    double s;
     for (int j = 0; j < n - 1; j++) {
         s = (*a.begin() + *a.rbegin()) / 2.;
         if (a.size() > 0) a.erase(a.begin());
