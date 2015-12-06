@@ -58,7 +58,16 @@ void test5() {
 }
 
 
+void test6() {
+    float counter = 0;
+    for (float i = 1e-3; i != 1000; i *= 10) {
+        counter += 1.0;
+    }
+    printf("%f", counter); //вывод на экран значения в переменной counter
+}
+
+
 int main(int argc, const char * argv[]) {
-    test5();
+    test6();
     return 0;
 }
