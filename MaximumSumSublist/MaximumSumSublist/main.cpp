@@ -33,12 +33,28 @@ int foo(int step, int sum) {
     return max(s1, s2);
 }
 
+int bar() {
+    int s[SZ + 1];
+    for (int i = 1; i <= n; i++) {
+        switch (i) {
+            case 1: s[i] = a[i];
+                break;
+            case 2: s[i] = max(s[i - 1] + a[i], a[i]);
+                break;
+            default: s[i] = max(s[i - 1] + a[i], s[i - 2] + a[i]);
+                break;
+        }
+    }
+    return s[n];
+}
+
 int main(int argc, const char * argv[]) {
 
     cin >> n;
     for (int i = 1; i <= n; i++) cin >> a[i];
     
-    cout << foo(0, 0);
+//    cout << foo(0, 0);
+    cout << bar();
     
     return 0;
 }
